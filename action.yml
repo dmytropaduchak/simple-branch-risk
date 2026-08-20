@@ -1,0 +1,18 @@
+name: Simple Branch Risk
+description: Warn when the default branch lacks basic branch protection settings.
+author: Dmytro Paduchak
+branding:
+  icon: git-branch
+  color: green
+inputs:
+  github-token:
+    description: Token with permission to read branch protection and post comments.
+    required: false
+    default: ${{ github.token }}
+  fail-on:
+    description: "none = report only; medium or high = fail the job when findings match that severity."
+    required: false
+    default: none
+runs:
+  using: node20
+  main: dist/index.js
